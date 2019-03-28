@@ -4,7 +4,7 @@ from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
-
+#ip = 'http://132.73.201.223'
 def main():
     # download_path = 'D:\_Guy\d9anime\downloaded'
     # download('kyoukai no kanata', [12])
@@ -18,10 +18,10 @@ def main():
     opts = Options()
     opts.set_headless()
     browser = Chrome(options=opts)
-    browser.get("http://10.0.0.4:12345/pick_aq/")
+    browser.get("http://132.73.201.223:12345/pick_aq/")
     browser.find_element_by_id('finish_pick_aq').click()
-
-
+    print("sss")
+    print(browser.current_url)
     return
 
 
