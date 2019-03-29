@@ -21,7 +21,8 @@ def main():
     opts.set_headless()
     browser = Chrome(options=opts)
     #test1(browser)
-    test2(browser)
+    #test2(browser)
+    test_req_one_one(browser)
     return
 
 def test1(driver):
@@ -48,6 +49,44 @@ def test3(driver):
                                 "return x;")
     print(res)
     return
+
+
+def test_req_one_one(driver):
+    driver.get("http://132.73.201.223:12345/attractions/")
+    first_len = driver.execute_script("getRequestAttractions(funcForTest);"
+                          "return attr_arr_for_test.length;")
+    print(first_len)
+    driver.find_element_by_id('add_manually_menu').click()
+    driver.find_element_by_id('manual_lat').send_keys('31.2625444444')
+    driver.find_element_by_id('manual_lng').send_keys('34.8019111199')
+    driver.find_element_by_id('add_manually').click()
+    driver.find_element_by_id('attr_name').send_keys('test attraction')
+    driver.find_element_by_id('desc').send_keys('test attraction')
+    driver.find_element_by_id('submit_btn_add_attr').click()
+    driver.find_element_by_id('skip_game_btn').click()
+    driver.find_element_by_id('finish_add_aq').click()
+    driver.find_element_by_id('finish_add_hint').click()
+
+    if driver.current_url == 'http://132.73.201.223:12345/attractions/':
+        print("we are on the right page!")
+
+    second_len = driver.execute_script("getRequestAttractions(funcForTest);"
+                                      "return attr_arr_for_test.length;")
+    print(second_len)
+
+    if second_len == first_len+1:
+        print("test passed!!!")
+    else:
+        print("test failed ! :( ")
+
+
+
+
+
+
+
+    return
+
 
 if __name__ == '__main__':
     main()
