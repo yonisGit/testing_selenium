@@ -36,23 +36,17 @@ def test1(driver):
 
 def test2(driver):
     driver.get('http://132.73.201.223:12345/attractions/')
-    # points_arr = driver.find_element_by_id('points_arr_for_test').get_attribute('value')
-    # print(points_arr)
     driver.execute_script("shitToDeleteFast()")
-    #myscript = settings.shitToDeleteFast()
-    # driver = webdriver.PhantomJS()
-    # driver.get('http://132.73.201.223:12345/attractions/')
-    # result = driver.execute_script(myscript)
     print(driver.current_url)
-    # driver.quit()
-    #resp = req.get('http://132.73.201.223:12344/managementsystem/attraction/?format=json')
 
-    # driver.find_element_by_id('finish_pick_aq').click()
-    # if (driver.current_url == 'http://132.73.201.223:12345/attractions/'):
-    #     print('test passed!')
-    # else:
-    #     print('test failed!')
+    return
 
+
+def test3(driver):
+    driver.get('http://132.73.201.223:12345/attractions/')
+    res = driver.execute_script("let x= funcThatReturnsOne();"
+                                "return x;")
+    print(res)
     return
 
 if __name__ == '__main__':
