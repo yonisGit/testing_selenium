@@ -53,8 +53,7 @@ def test3(driver):
 
 def test_req_one_one(driver):
     driver.get("http://132.73.201.223:12345/attractions/")
-    first_len = driver.execute_script("getRequestAttractions(funcForTest);"
-                          "return attr_arr_for_test.length;")
+    first_len = driver.execute_script("return attr_arr_for_test2.length;")
     print(first_len)
     driver.find_element_by_id('add_manually_menu').click()
     driver.find_element_by_id('manual_lat').send_keys('31.2625444444')
